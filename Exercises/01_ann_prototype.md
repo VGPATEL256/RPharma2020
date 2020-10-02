@@ -1,6 +1,8 @@
 Exercise - Prototyping an Artificial Neural Network in R
 ================
 
+’‘’Learning Objective:’’’
+
 You will find a simple Artifical Neural Network implemented in base R
 (i.e. no libraries) here:
 [R/01\_ann\_prototype.R](../R/01_ann_prototype.R) (This script is also

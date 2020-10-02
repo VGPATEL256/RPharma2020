@@ -13,6 +13,8 @@ This workshop is introductory and open to everyone assuming basic R/Data Science
 
 ## Schedule
 
+_Rule number one for the exercises - Do read every line written, it is there for a reason and also have fun!_
+
 - 08.40 - 08.55 [Brief talk: Introduction to Artificial Neural Networks](Talks/01_introduction_to_artificial_neural_networks.html)
 
 - 08.55 - 09.20 [Exercise: Prototyping an ANN in R](Exercises/01_ann_prototype.md)
