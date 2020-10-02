@@ -2,8 +2,9 @@ Exercise - Prototyping an Artificial Neural Network in R
 ================
 
 You will find a simple Artifical Neural Network implemented in base R
-(i.e. no libraries) here: [R/01\_ann\_prototype.R](R/01_ann_prototype.R)
-(This script is also in the directory `/R` of your RStudio session)
+(i.e. no libraries) here:
+[R/01\_ann\_prototype.R](../R/01_ann_prototype.R) (This script is also
+in the directory `/R` of your RStudio session)
 
 *Your task is to, make the script run and find and tune the
 hyperparameters `n_hidden`, `epochs` and `epsilon` to get a working
