@@ -4,7 +4,7 @@ Exercise - Deep Learning for Cancer Immunotherapy
 You will find an Artifical Neural Network implemented in keras capable
 of predicting if a given peptide will bind, i.e. the molecular
 interaction here:
-[R/05\_deep\_learning\_for\_cancer\_immunotherapy.R](https://github.com/leonjessen/RPharma2019/blob/master/R/05_deep_learning_for_cancer_immunotherapy.R)
+[R/05\_deep\_learning\_for\_cancer\_immunotherapy.R](05_deep_learning_for_cancer_immunotherapy.md)
 (This script is also in the directory `/R` of your RStudio session).
 This exercise is based on my post on [Deep Learning for Cancer
 Immunotherapy on the TensorFlow for R

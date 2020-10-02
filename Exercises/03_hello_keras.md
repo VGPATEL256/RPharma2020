@@ -4,8 +4,7 @@ Hello Keras - A Simple Artificial Neural Network using Keras
 ## Task
 
 *Copy relevant code from below to
-[R/02\_hello\_keras.R](https://github.com/leonjessen/RPharma2019/blob/master/R/02_hello_keras.R)
-and create a working model*
+[R/02\_hello\_keras.R](R/02_hello_keras.R) and create a working model*
 
 Note how this is now a 3-class classifier and we are evaluating the
 predictive performance of the model on left out data.
@@ -18,8 +17,8 @@ neural network using Keras. Naturally, we will use the `iris` data set.
 ### Load libraries
 
 ``` r
-library('tidyverse')
-library('keras')
+library("tidyverse")
+library("keras")
 ```
 
 ### Data
@@ -33,7 +32,7 @@ and 3 output classes `setosa` `versicolor` and `virginica`, with 50
 observations in each class:
 
 ``` r
-head(iris)
+iris %>% head
 ```
 
     ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -52,8 +51,7 @@ correct output class (`setosa` `versicolor` and `virginica`) using an
 artificial neural network. For this task, we have chosen the following
 simple architecture with one input layer with 4 neurons (one for each
 feature), one hidden layer with 4 neurons and one output layer with 3
-neurons (one for each class), all fully
-connected:
+neurons (one for each class), all fully connected:
 
 ![](https://raw.githubusercontent.com/leonjessen/keras_tensorflow_on_iris/master/img/architecture_visualisation.png)
 
@@ -69,14 +67,16 @@ We start with slightly wrangling the iris data set by renaming the input
 features and converting character labels to numeric:
 
 ``` r
-nn_dat = iris %>% as_tibble %>%
+nn_dat <- iris %>%
+  as_tibble %>%
   rename(sepal_l_feat = Sepal.Length,
          sepal_w_feat = Sepal.Width,
          petal_l_feat = Petal.Length,
          petal_w_feat = Petal.Width) %>%
   mutate(class_num = as.numeric(Species) - 1, # factor, so = 0, 1, 2
          class_label = Species)
-nn_dat %>% head(3)
+nn_dat %>%
+  head(3)
 ```
 
     ## # A tibble: 3 x 7
@@ -92,13 +92,14 @@ setting aside 20% of the data for left out data partition, to be used
 for final performance evaluation:
 
 ``` r
-test_f = 0.20
-nn_dat = nn_dat %>%
-  mutate(partition = sample(x = c('train','test'),
+test_f <- 0.20
+nn_dat <- nn_dat %>%
+  mutate(partition = sample(x = c("train","test"),
                             size = nrow(.),
                             replace = TRUE,
                             prob = c(1 - test_f, test_f)))
-nn_dat %>% count(partition)
+nn_dat %>%
+  count(partition)
 ```
 
     ## # A tibble: 2 x 2
@@ -110,21 +111,23 @@ nn_dat %>% count(partition)
 Based on the partition, we can now create training and test data
 
 ``` r
-x_train = nn_dat %>%
-  filter(partition == 'train') %>%
+# Training data
+x_train <- nn_dat %>%
+  filter(partition == "train") %>%
   select(contains("feat")) %>%
   as.matrix
-y_train = nn_dat %>%
-  filter(partition == 'train') %>%
+y_train <- nn_dat %>%
+  filter(partition == "train") %>%
   pull(class_num) %>%
   to_categorical(3)
 
-x_test = nn_dat %>%
-  filter(partition == 'test') %>%
+# Test data
+x_test <- nn_dat %>%
+  filter(partition == "test") %>%
   select(contains("feat")) %>%
   as.matrix
-y_test = nn_dat %>%
-  filter(partition == 'test') %>%
+y_test <- nn_dat %>%
+  filter(partition == "test") %>%
   pull(class_num) %>%
   to_categorical(3)
 ```
@@ -135,17 +138,17 @@ Set architecture (See the green ANN visualisation)
 
 ``` r
 model = keras_model_sequential() %>% 
-  layer_dense(units = 4, activation = 'relu', input_shape = 4) %>% 
-  layer_dense(units = 3, activation = 'softmax')
+  layer_dense(units = 4, activation = "relu", input_shape = 4) %>% 
+  layer_dense(units = 3, activation = "softmax")
 ```
 
 Compile model
 
 ``` r
 model %>%
-  compile(loss = 'categorical_crossentropy',
-          optimizer = optimizer_rmsprop(),
-          metrics = c('accuracy')
+  compile(loss = "categorical_crossentropy",
+          optimizer = optimizer_adam(),
+          metrics = c("accuracy")
 )
 ```
 
@@ -156,17 +159,18 @@ model %>%
   summary
 ```
 
-    ## ___________________________________________________________________________
-    ## Layer (type)                     Output Shape                  Param #     
-    ## ===========================================================================
-    ## dense (Dense)                    (None, 4)                     20          
-    ## ___________________________________________________________________________
-    ## dense_1 (Dense)                  (None, 3)                     15          
-    ## ===========================================================================
+    ## Model: "sequential"
+    ## ________________________________________________________________________________
+    ## Layer (type)                        Output Shape                    Param #     
+    ## ================================================================================
+    ## dense (Dense)                       (None, 4)                       20          
+    ## ________________________________________________________________________________
+    ## dense_1 (Dense)                     (None, 3)                       15          
+    ## ================================================================================
     ## Total params: 35
     ## Trainable params: 35
     ## Non-trainable params: 0
-    ## ___________________________________________________________________________
+    ## ________________________________________________________________________________
 
 As expected we see 35 trainable parameters.
 
@@ -176,7 +180,7 @@ Lastly we fit the model and save the training progres in the `history`
 object:
 
 ``` r
-history = model %>%
+history <- model %>%
   fit(x = x_train,
       y = y_train,
       epochs = 200,
@@ -185,12 +189,13 @@ history = model %>%
 )
 ```
 
-Once the model is trained, we can inspect the training
-process
+Once the model is trained, we can inspect the training process
 
 ``` r
 plot(history)
 ```
+
+    ## `geom_smooth()` using formula 'y ~ x'
 
 <img src="03_hello_keras_files/figure-gfm/see_training-1.png" style="display: block; margin: auto;" />
 
@@ -199,39 +204,54 @@ plot(history)
 The final performance can be obtained like so:
 
 ``` r
-perf = model %>% evaluate(x_test, y_test)
+perf <- model %>%
+  evaluate(x_test, y_test)
 perf
 ```
 
-    ## $loss
-    ## [1] 0.2103305
-    ## 
-    ## $acc
-    ## [1] 0.9767442
+    ##      loss  accuracy 
+    ## 0.3556838 0.9534883
 
 Then we can augment the `nn_dat` for plotting:
 
 ``` r
-plot_dat = nn_dat %>%
-  filter(partition == 'test') %>%
-  mutate(class_num = factor(class_num),
-         y_pred = factor(predict_classes(model, x_test)),
-         Correct = factor(ifelse(class_num == y_pred, "Yes", "No")))
-plot_dat %>% select(-contains("feat")) %>% head(3)
+plot_dat <- nn_dat %>%
+  filter(partition == "test") %>%
+  mutate(y_pred = predict_classes(model, x_test),
+         Correct = ifelse(class_num == y_pred, "Yes", "No"))
+plot_dat %>%
+  select(-contains("feat")) %>%
+  head(3)
 ```
 
     ## # A tibble: 3 x 6
     ##   Species class_num class_label partition y_pred Correct
-    ##   <fct>   <fct>     <fct>       <chr>     <fct>  <fct>  
-    ## 1 setosa  0         setosa      test      0      Yes    
-    ## 2 setosa  0         setosa      test      0      Yes    
-    ## 3 setosa  0         setosa      test      0      Yes
+    ##   <fct>       <dbl> <fct>       <chr>      <dbl> <chr>  
+    ## 1 setosa          0 setosa      test           0 Yes    
+    ## 2 setosa          0 setosa      test           0 Yes    
+    ## 3 setosa          0 setosa      test           0 Yes
 
 and lastly, we can visualise the confusion matrix like so:
+
+``` r
+plot_dat %>%
+  ggplot(aes(x = factor(y_pred),
+             y = factor(class_num),
+             colour = Correct)) +
+  geom_jitter() +
+  scale_x_discrete(labels = levels(nn_dat$class_label)) +
+  scale_y_discrete(labels = levels(nn_dat$class_label)) +
+  theme_bw() +
+  labs(title = "Classification Performance of Artificial Neural Network",
+       subtitle = str_c("Accuracy = ", round(perf["accuracy"], 3) * 100, "%"),
+       x = "Predicted iris class",
+       y = "True iris class")
+```
+
 <img src="03_hello_keras_files/figure-gfm/conf_mat_vis-1.png" style="display: block; margin: auto;" />
 
 ### Conclusion
 
-Here, we created a 3-class predictor with an accuracy of 97.7% on a left
+Here, we created a 3-class predictor with an accuracy of 95.3% on a left
 out data partition. I hope, this illustrates how relatively simple it is
 to get started with `Keras`.

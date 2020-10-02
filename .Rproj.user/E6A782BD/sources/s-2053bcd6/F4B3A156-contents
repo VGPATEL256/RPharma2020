@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-You will find an Artifical Neural Network implemented in keras capable of predicting if a given peptide will bind, i.e. the molecular interaction here: [R/05_deep_learning_for_cancer_immunotherapy.R](https://github.com/leonjessen/RPharma2019/blob/master/R/05_deep_learning_for_cancer_immunotherapy.R) (This script is also in the directory `/R` of your RStudio session). This exercise is based on my post on [Deep Learning for Cancer Immunotherapy on the TensorFlow for R blog](https://blogs.rstudio.com/tensorflow/posts/2018-01-29-dl-for-cancer-immunotherapy/).
+You will find an Artifical Neural Network implemented in keras capable of predicting if a given peptide will bind, i.e. the molecular interaction here: [R/05_deep_learning_for_cancer_immunotherapy.R](05_deep_learning_for_cancer_immunotherapy.md) (This script is also in the directory `/R` of your RStudio session). This exercise is based on my post on [Deep Learning for Cancer Immunotherapy on the TensorFlow for R blog](https://blogs.rstudio.com/tensorflow/posts/2018-01-29-dl-for-cancer-immunotherapy/).
 
 The model is working, when all class assignment are correct, i.e. when all of the data points appear in the diagonal in the final plot.
 

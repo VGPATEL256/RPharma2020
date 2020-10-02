@@ -3,8 +3,8 @@ Exercise - Regression on the diamonds data set
 
 You will find an Artifical Neural Network implemented in keras capable
 of predicting the price of a diamond here:
-[R/04\_diamonds\_regression.R](https://github.com/leonjessen/RPharma2019/blob/master/R/04_diamonds_regression.R)
-(This script is also in the directory `/R` of your RStudio session)
+[R/04\_diamonds\_regression.R](R/04_diamonds_regression.R) (This script
+is also in the directory `/R` of your RStudio session)
 
 *Your task is to, make the script run and find and tune the
 hyperparameters to get a working model*

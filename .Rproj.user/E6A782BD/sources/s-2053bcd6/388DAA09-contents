@@ -4,3 +4,4 @@ r-reticulate/
 .Rprofile
 .git
 *.Rmd
+.gitignore
