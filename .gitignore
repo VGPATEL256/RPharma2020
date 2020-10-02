@@ -1,0 +1,6 @@
+project.Rproj
+r-reticulate/
+.Rhistory
+.Rprofile
+.git
+*.Rmd

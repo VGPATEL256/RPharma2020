@@ -1,0 +1,25 @@
+{
+    "id": "388DAA09",
+    "path": "/cloud/project/.gitignore",
+    "project_path": ".gitignore",
+    "type": "gitignore",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1601658619247.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "6,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1601658867,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1601658867679,
+    "read_only": false,
+    "read_only_alternatives": []
+}

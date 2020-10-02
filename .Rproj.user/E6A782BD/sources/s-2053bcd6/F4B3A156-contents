@@ -1,0 +1,30 @@
+---
+title: "Exercise - Deep Learning for Cancer Immunotherapy"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+You will find an Artifical Neural Network implemented in keras capable of predicting if a given peptide will bind, i.e. the molecular interaction here: [R/05_deep_learning_for_cancer_immunotherapy.R](https://github.com/leonjessen/RPharma2019/blob/master/R/05_deep_learning_for_cancer_immunotherapy.R) (This script is also in the directory `/R` of your RStudio session). This exercise is based on my post on [Deep Learning for Cancer Immunotherapy on the TensorFlow for R blog](https://blogs.rstudio.com/tensorflow/posts/2018-01-29-dl-for-cancer-immunotherapy/).
+
+The model is working, when all class assignment are correct, i.e. when all of the data points appear in the diagonal in the final plot.
+
+- __Q1__: Why is the training performance much better than the test performance?
+- __Q2__: We see here a new layer type `layer_dropout`, what does this do and why is this useful?
+- __Q3__: What are the probabilities for the peptide `LMAFYLYEV` to be non-, weak- or strong binder?
+- __Q4__: Same question for the peptide `LMAFYLYEW`
+- __Q5__: Same question for the peptide `LWAFYLYEV`
+
+<details><summary>When you are done thinking, click here for answers</summary>
+
+- __Q1__: Because of the high model complexicity, we are over-fitting
+- __Q2__: It randomly masks updating of some weights aiming af avoiding overfitting
+- __Q3__: `0, 7.005256e-05, 0.9999299` using the command `'LMAFYLYEV' %>% encode_peptide(m = bl62) %>% predict(model, .)`
+- __Q4__: `1, 3.598115e-09, 0`, likewise
+- __Q5__: `0.9999325, 6.744685e-05, 8.386781e-30`, likewise
+
+The last question really illustrates the power here. Once you have the model working, you no longer need to go to the laboratory to test the peptides, meaning that you can explore the biology of the system _in silico_ at greatly reduced costs. Here, we see that the 2nd and 9th position are very important for binding.
+
+</details>
