@@ -54,7 +54,8 @@ there for a reason and also have fun\!*
       - [Deep Learning for Cancer
         Immunotherapy](Exercises/05_deep_learning_for_cancer_immunotherapy.md)
 
-  - 12.05 - 12.35 / 18.05 - 18.35 (30min)
+  - 12.05 - 12.35 / 18.05 - 18.35 (30min) [A Case
+    Story](Exercises/06_a_fictive_case_story.md)
 
   - 12.35 - 12.50 / 18.35 - 18.50 (15min) [Brief talk: Session 2 Summary
     and Q\&A](Talks/06_session_2_summary.html)

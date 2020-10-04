@@ -210,7 +210,7 @@ perf
 ```
 
     ##      loss  accuracy 
-    ## 0.3556838 0.9534883
+    ## 0.3634619 0.9767442
 
 Then we can augment the `nn_dat` for plotting:
 
@@ -252,6 +252,6 @@ plot_dat %>%
 
 ### Conclusion
 
-Here, we created a 3-class predictor with an accuracy of 95.3% on a left
+Here, we created a 3-class predictor with an accuracy of 97.7% on a left
 out data partition. I hope, this illustrates how relatively simple it is
 to get started with `Keras`.

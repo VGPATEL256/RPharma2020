@@ -1,12 +1,15 @@
 Exercise - Prototyping an Artificial Neural Network in R
 ================
 
-’‘’Learning Objective:’’’
+*Learning Objective: Get an initial intuition for how hyperparameters
+affect an ANN model*
 
 You will find a simple Artifical Neural Network implemented in base R
 (i.e. no libraries) here:
 [R/01\_ann\_prototype.R](../R/01_ann_prototype.R) (This script is also
-in the directory `/R` of your RStudio session)
+in the directory `/R` of your RStudio session). You are NOT expected to
+follow all the details of the code, but rather an get an impression of
+an ANN prototype.
 
 *Your task is to, make the script run and find and tune the
 hyperparameters `n_hidden`, `epochs` and `epsilon` to get a working
