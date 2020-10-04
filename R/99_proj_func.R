@@ -1,16 +1,38 @@
-# Simple encoding function for converting a given peptide 'x' to a numerical
-# representation using the 'm' matrix
+# Encoding function for converting a given peptide 'x' to a numerical
+# representation using the 'm' matrix, e.g. using BLOSUM [1]
+# 1. https://en.wikipedia.org/wiki/BLOSUM
 encode_peptide <- function(x, m){
-  X_enc <- x %>%
-    str_split('') %>%
-    lapply(function(x_i){
-      m[x_i,] %>%
-        as.matrix %>%
-        t %>%
-        matrix(nrow = 1, byrow = TRUE) %>%
-        return
-    })
+  X_enc <- lapply(strsplit(x, ""), function(x_i){
+    x_i_enc_m <- m[x_i,] # matrix of dim = length(pep) x 20
+    x_i_enc_v <- as.vector(t(x_i_enc_m)) # vector of length = length(pep) * 20
+    return(x_i_enc_v)
+  })
   X_enc <- do.call(rbind, X_enc)
   rownames(X_enc) <- x
+  colnames(X_enc) <- paste0("feature_", 1:ncol(X_enc))
   return(X_enc)
+}
+alanine_scan <- function(x){
+  out <- lapply(strsplit(x, ""), function(x_i){
+    k <- length(x_i)
+    scan <- sapply(1:k, function(i){
+      mut <- x_i
+      mut[i] <-  "A"
+      mut <- paste0(mut, collapse = "")
+      return(mut)
+    })
+    return(scan)
+  })
+  names(out) <- x
+  return(out)
+}
+find_mut_pos <- function(x,y){
+  X <- strsplit(x, "")
+  Y <- strsplit(y, "")
+  out <- sapply(1:length(x), function(i){
+    p_mismatch = which(X[[i]] != Y[[i]])
+    if( length(p_mismatch) < 1 ){ p_mismatch = NA }
+    return(p_mismatch)
+  })
+  return(out)
 }

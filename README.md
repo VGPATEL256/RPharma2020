@@ -46,12 +46,15 @@ there for a reason and also have fun\!*
   - 11.20 - 11.35 / 17.20 - 17.35 (15min) [Brief talk: A bit more on
     Keras](Talks/05_a_bit_more_on_keras.html)
 
-  - 11.35 - 12.05 / 17.35 - 18.05 (30min) [Exercise: Predicting Price
-    (regression)](Exercises/04_diamonds_regression.md)
+  - 11.35 - 12.05 / 17.35 - 18.05 (30min) Exercise: Now, you must choose
+    between:
+    
+      - [Predicting commodity prices
+        (regression)](Exercises/04_diamonds_regression.md) or
+      - [Deep Learning for Cancer
+        Immunotherapy](Exercises/05_deep_learning_for_cancer_immunotherapy.md)
 
-  - 12.05 - 12.35 / 18.05 - 18.35 (30min) [Exercise: Deep Learning for
-    Cancer
-    Immunotherapy](Exercises/05_deep_learning_for_cancer_immunotherapy.md)
+  - 12.05 - 12.35 / 18.05 - 18.35 (30min)
 
   - 12.35 - 12.50 / 18.35 - 18.50 (15min) [Brief talk: Session 2 Summary
     and Q\&A](Talks/06_session_2_summary.html)

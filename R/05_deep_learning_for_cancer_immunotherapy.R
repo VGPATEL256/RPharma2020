@@ -5,7 +5,7 @@
 # Load libraries ----------------------------------------------------------
 library("tidyverse")
 library("keras")
-
+library("ggseqlogo")
 
 # Define functions --------------------------------------------------------
 source(file = "R/99_proj_func.R")
@@ -55,7 +55,7 @@ pep_dat %>%
 # representation
 # Reference: https://en.wikipedia.org/wiki/BLOSUM
 # Data source: https://www.ncbi.nlm.nih.gov/Class/FieldGuide/BLOSUM62.txt
-bl62 <- read.table(file = "data/BLOSUM62.txt")
+bl62 <- read.table(file = "data/BLOSUM62.txt") %>% as.matrix
 
 # Define training and test feature matrices
 X_train <- pep_dat %>%
@@ -188,6 +188,46 @@ results %>%
                      values = c("tomato","cornflowerblue")) +
   facet_wrap(vars(data_type), nrow = 1)
 
+
+# What did the model learn? (posthoc analysis) ----------------------------
+
+# From the test set, retrieve 100 peptides predicted to be class SB
+test_pep_SB <- pep_dat %>%
+  filter(data_type == "test") %>%
+  mutate(pred_class = predict_classes(model, encode_peptide(peptide, bl62))) %>%
+  filter(pred_class == 2) %>%
+  sample_n(100) %>%
+  pull(peptide)
+
+# Now, perform an alanine scan, i.e. mutate each peptide position to an
+# alanine (ala/A) and use the model to predict the impact of the mutation
+mutational_scan = alanine_scan(test_pep_SB) %>%
+  as_tibble %>% 
+  pivot_longer(cols = everything(),
+               names_to = "wildtype",
+               values_to = "mutant") %>%
+  arrange(wildtype) %>%
+  mutate(mut_pos = find_mut_pos(wildtype, mutant),
+         wildtype_class = predict_classes(model, encode_peptide(wildtype, bl62)),
+         mutant_class = predict_classes(model, encode_peptide(mutant, bl62)))
+
+# Then we can analyse the positional impact of the mutation by looking at
+# differences between the class of the wildtype and the mutant
+mutational_scan %>%
+  drop_na(mut_pos) %>%
+  group_by(mut_pos) %>%
+  summarise(mean_wildtype_class = mean(wildtype_class),
+            mean_mutant_class = mean(mutant_class)) %>% 
+  ungroup() %>% 
+  mutate(minus_delta_class = -(mean_mutant_class - mean_wildtype_class)) %>% 
+  ggplot(aes(x = mut_pos, y = minus_delta_class)) +
+  geom_col() +
+  theme_bw()
+
+# But what if you wanted to see exactly which amino acid residues are
+# important at what positions in the peptide? Let us try to create a
+# sequence logo
+ggseqlogo(test_pep_SB)
 
 # Save model --------------------------------------------------------------
 save_model_hdf5(object = model,
