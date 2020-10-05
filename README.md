@@ -51,8 +51,8 @@ there for a reason and also have fun\!*
     
       - [Predicting commodity prices
         (regression)](Exercises/04_diamonds_regression.md) or
-      - [Deep Learning for Cancer
-        Immunotherapy](Exercises/05_deep_learning_for_cancer_immunotherapy.md)
+      - [Deep Learning for Cancer Immunotherapy
+        (Classification)](Exercises/05_deep_learning_for_cancer_immunotherapy.md)
 
   - 12.05 - 12.35 / 18.05 - 18.35 (30min) [A Case
     Story](Exercises/06_a_fictive_case_story.md)

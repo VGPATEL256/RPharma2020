@@ -20,7 +20,7 @@
       // Slide settings
       settings: {
                 title: 'Introduction to Keras/TensorFlow in R (continued)',
-                        subtitle: 'The Second Annual R/Pharma Conference',
+                        subtitle: 'The Third Annual R/Pharma Conference - Workshop Series',
                 useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -1353,6 +1353,11 @@ slides > slide {
 opacity: 0;
 }
 @media print {
+
+@page {
+size: landscape;
+margin: 0;
+}
 
 slides slide {
 display: block !important;
@@ -3101,6 +3106,13 @@ slide:not(.current) .plotly.html-widget{
   display: block;
 }
 
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            
   </style>
 
 
@@ -3116,11 +3128,11 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">August 21st 2019</p>
+            <p style="margin-top: 6px; margin-left: -2px;">October 5th 2020</p>
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Historic Highlights of Artificial Neural Networks?</h2></hgroup><article  class="smaller " id="historic-highlights-of-artificial-neural-networks">
+<slide class=""><hgroup><h2>Historic Highlights of Artificial Neural Networks?</h2></hgroup><article  id="historic-highlights-of-artificial-neural-networks" class="smaller ">
 
 <ul>
 <li>1940’s: Neurophysiologist Warren McCulloch and mathematician Walter Pitts wrote a paper on how neurons might work</li>
@@ -3131,7 +3143,7 @@ slide:not(.current) .plotly.html-widget{
 <li>2018: On day 2 at rstudio::conf 2018 in San Diego, RStudio CEO J.J. Allaire gives his keynote talk on <a href='https://www.youtube.com/watch?v=atiYXm7JZv0' title=''>&ldquo;Machine Learning with R and TensorFlow&rdquo;</a>, officially announcing, that henceforth Keras and TensorFlow will by fully available in R</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Keras and TensorFlow - What you need to know I</h2></hgroup><article  class="smaller " id="keras-and-tensorflow---what-you-need-to-know-i">
+</article></slide><slide class=""><hgroup><h2>Keras and TensorFlow - What you need to know I</h2></hgroup><article  id="keras-and-tensorflow---what-you-need-to-know-i" class="smaller ">
 
 <ul>
 <li>TensorFlow is an open source software library for numerical computations written in <code>C++</code> (I.e. not confined to ANNs)</li>
@@ -3141,7 +3153,7 @@ slide:not(.current) .plotly.html-widget{
 <li>Keras was developed by by François Chollet with a focus on enabling fast experimentation <em>&ldquo;Being able to go from idea to result with the least possible delay is key to doing good research&rdquo;</em></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Keras and TensorFlow - What you need to know II</h2></hgroup><article  class="smaller " id="keras-and-tensorflow---what-you-need-to-know-ii">
+</article></slide><slide class=""><hgroup><h2>Keras and TensorFlow - What you need to know II</h2></hgroup><article  id="keras-and-tensorflow---what-you-need-to-know-ii" class="smaller ">
 
 <ul>
 <li>The Keras R-package is written in <code>R</code> by François Chollet and JJ Allaire</li>
@@ -3153,7 +3165,7 @@ slide:not(.current) .plotly.html-widget{
 
 <p>Sources: <a href='https://keras.io/' title=''>keras.io</a>, <a href='https://tensorflow.rstudio.com/' title=''>tensorflow.rstudio.com</a>, <a href='https://github.com/tensorflow/tensorflow' title=''>github.com/tensorflow</a>, <a href='https://keras.rstudio.com/' title=''>keras.rstudio.com</a>, <a href='https://www.youtube.com/watch?v=atiYXm7JZv0' title=''>Machine Learning with R and TensorFlow</a>, <a href='https://www.youtube.com/watch?v=YrzE_N4bjDM' title=''>TensorFlow and Keras in R - Josh Gordon meets with J.J. Allaire</a></p>
 
-</article></slide><slide class=""><hgroup><h2>The suite of TensorFlow R packages</h2></hgroup><article  class="smaller " id="the-suite-of-tensorflow-r-packages">
+</article></slide><slide class=""><hgroup><h2>The suite of TensorFlow R packages</h2></hgroup><article  id="the-suite-of-tensorflow-r-packages" class="smaller ">
 
 <ul>
 <li>TensorFlow APIs
@@ -3175,7 +3187,7 @@ slide:not(.current) .plotly.html-widget{
 
 <p><em>Source: <a href='https://www.youtube.com/watch?v=atiYXm7JZv0' title=''>Machine Learning with R and TensorFlow 32:27</a></em></p>
 
-</article></slide><slide class=""><hgroup><h2>My take</h2></hgroup><article  class="smaller " id="my-take">
+</article></slide><slide class=""><hgroup><h2>My take</h2></hgroup><article  id="my-take" class="smaller ">
 
 <ul>
 <li><p>Personally, I believe that the paramount factor for a succesful technology and for that technology to have a societal impact, is availability</p></li>
