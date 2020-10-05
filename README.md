@@ -14,6 +14,9 @@ will also touch upon parameters, hyper-parameters and how to handle data
 all in context of model over-fitting. All of the aforementioned will be
 done using TensorFlow via Keras for R.
 
+Your workshop host for the day will be [Leon Eyrich
+Jessen](https://rinpharma.com/workshops/leon-jessen/)
+
 ## Schedule 9:00-13:00 ET / 15:00-19:00 CEST
 
 *Rule number one for the exercises - Do read every line written, it is
