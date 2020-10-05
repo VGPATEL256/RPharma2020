@@ -201,7 +201,7 @@ results %>%
 # that. From your cross validation, it seems that a good choice of alpha could
 # be ?. You choose that and re-train a new complex model using the new alpha:
 
-alpha = NA # ? Look at the plot you just made and decide on an alpha
+alpha = 2 # ? Look at the plot you just made and decide on an alpha
 mdl_complex_new_alpha <- train_model_complex(y ~ x, alpha = alpha,
                                              data = case_data)
 
@@ -217,6 +217,14 @@ case_data_w_new_preds <- case_data %>%
                                             newdata = data.frame(x = x)))
 
 # Again, seeing is believing, so let us have a look at the models you created:
+case_data_w_new_preds_metric_plot <- case_data_w_new_preds %>%
+  get_metrics %>%
+  ggplot(aes(x = metric, y = value, fill = type, label = round(value,2))) +
+  geom_col(position = "dodge", alpha = 0.5) +
+  geom_text(position = position_dodge(width = 0.9), vjust = -0.25, size = 4) +
+  scale_y_continuous(limits = c(0,2.2)) +
+  theme_bw() +
+  labs(title = "case data")
 case_data_w_new_preds_plot <- case_data_w_new_preds %>% 
   ggplot(aes(x = x, y = y)) +
   geom_point() +
@@ -226,9 +234,10 @@ case_data_w_new_preds_plot <- case_data_w_new_preds %>%
                            names_to = "type",
                            values_to = "value"),
             aes(x = x, y = value, colour = type), inherit.aes = FALSE) +
+  scale_y_continuous(limits = c(3,9)) +
   theme_bw() +
-  labs(x = "explanatory", y = "response")
-case_data_w_new_preds_plot
+  labs(x = "explanatory", y = "response", title = "case data")
+case_data_w_new_preds_plot + case_data_w_new_preds_metric_plot
 
 # Q3: Again, discuss with your break-out room partner:
 #     Interpret and explain what is going on here
@@ -250,6 +259,14 @@ new_data_w_new_preds <- new_data %>%
                                             newdata = data.frame(x = x)))
 
 # Again, seeing is believing, so let us have a look at the models you created:
+new_data_w_new_preds_metric_plot <- new_data_w_new_preds %>%
+  get_metrics %>%
+  ggplot(aes(x = metric, y = value, fill = type, label = round(value,2))) +
+  geom_col(position = "dodge", alpha = 0.5) +
+  geom_text(position = position_dodge(width = 0.9), vjust = -0.25, size = 4) +
+  scale_y_continuous(limits = c(0,2.2)) +
+  theme_bw() +
+  labs(title = "new data")
 new_data_w_new_preds_plot <- new_data_w_new_preds %>% 
   ggplot(aes(x = x, y = y)) +
   geom_point() +
@@ -259,12 +276,15 @@ new_data_w_new_preds_plot <- new_data_w_new_preds %>%
                            names_to = "type",
                            values_to = "value"),
             aes(x = x, y = value, colour = type), inherit.aes = FALSE) +
+  scale_y_continuous(limits = c(3,9)) +
   theme_bw() +
-  labs(x = "explanatory", y = "response")
-new_data_w_new_preds_plot
+  labs(x = "explanatory", y = "response", title = "new data")
+new_data_w_new_preds_plot + new_data_w_new_preds_metric_plot
 
 # Q4: Again, discuss with your break-out room partner:
 #     Interpret and explain what is going on here
 
-# Perhaps it can bo use to view both of the last plots you made simultanously?
-print(case_data_w_new_preds_plot / new_data_w_new_preds_plot)
+# Perhaps it can bo use to view both of the last plots you made simultaneously?
+print((case_data_w_new_preds_plot + case_data_w_new_preds_metric_plot) /
+        (new_data_w_new_preds_plot + new_data_w_new_preds_metric_plot))
+

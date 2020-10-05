@@ -1,8 +1,8 @@
 Exercise - A (fictive) Case Story
 ================
 
-You work as a senior data scientist in a company and you have been
-handed two predictive models, a simple naive baseline model and a more
+You work as a data scientist in a company and you have been handed two
+predictive models, a simple naive baseline model and a more
 sophisticated high-complexity model. Along with the models, you have
 been given a visualisation quantifying some performance metrics:
 
