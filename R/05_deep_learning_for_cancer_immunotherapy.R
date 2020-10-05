@@ -98,7 +98,7 @@ drop_out_5  <- 0
 n_output    <- 3
 o_ativate   <- "softmax"
 n_epochs    <- 100
-batch_size  <- 100
+batch_size  <- 128
 loss_func   <- "categorical_crossentropy"
 learn_rate  <- 0.001
 

@@ -184,7 +184,7 @@ history <- model %>%
   fit(x = x_train,
       y = y_train,
       epochs = 200,
-      batch_size = 20,
+      batch_size = 16,
       validation_split = 0
 )
 ```
@@ -210,7 +210,7 @@ perf
 ```
 
     ##      loss  accuracy 
-    ## 0.3634619 0.9767442
+    ## 0.2472026 0.9767442
 
 Then we can augment the `nn_dat` for plotting:
 
