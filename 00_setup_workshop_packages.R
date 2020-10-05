@@ -5,10 +5,12 @@
 
 # Install packages --------------------------------------------------------
 install.packages(c(
-  "keras",
+  "keras",     # Only this package is needed for keras/tensorflow
   "rmarkdown",
   "rprojroot",
-  "tidyverse"
+  "tidyverse",
+  "patchwork",
+  "ggseqlogo"
 ))
 
 
