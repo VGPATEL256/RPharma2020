@@ -201,7 +201,7 @@ results %>%
 # that. From your cross validation, it seems that a good choice of alpha could
 # be ?. You choose that and re-train a new complex model using the new alpha:
 
-alpha = 2 # ? Look at the plot you just made and decide on an alpha
+alpha = 0.1 # ? Look at the plot you just made and decide on an alpha
 mdl_complex_new_alpha <- train_model_complex(y ~ x, alpha = alpha,
                                              data = case_data)
 
