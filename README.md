@@ -60,8 +60,10 @@ there for a reason and also have fun\!*
   - 12.05 - 12.35 / 18.05 - 18.35 (30min) [A Case
     Story](Exercises/06_a_fictive_case_story.md)
 
-  - 12.35 - 12.50 / 18.35 - 18.50 (15min) [Brief talk: Session 2 Summary
-    and Q\&A](Talks/06_session_2_summary.html)
+  - 12.35 - 12.50 / 18.35 - 18.50 (15min) [Brief talk: Session 2
+    Summary](Talks/06_session_2_summary.html)
+
+  - 12.50 - 13.00 / 18.50 - 19.00 (10min) Workshop Q\&A
 
 *(Please note the html preview currently seem not be functioning. All
 slides are available under ‘Talks’ in your RStudio session `Files` pane.
