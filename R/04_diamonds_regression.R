@@ -50,18 +50,18 @@ y_test <- nn_dat %>%
 # Define ANN model --------------------------------------------------------
 
 # Set hyperparameters
-n_epochs <- 100#10               # Number of runs through entire data set
-batch_size <- 100#200            # Number of examples used for one error estimation
+n_epochs <- 10               # Number of runs through entire data set
+batch_size <- 200            # Number of examples used for one error estimation
 loss <- "mean_squared_error" # Quantify difference between target and pred
-learning_rate <- 0.01#0.1         # How big a step should we take during each update
+learning_rate <- 0.1         # How big a step should we take during each update
 optimzer <- optimizer_adam(lr = learning_rate) # Algorithm for taking steps
 h1_activation <- "relu"      # Non-linear function for 1st hidden layer
-h1_n_hidden <- 10#2             # Number of hidden units in 1st hidden layer
+h1_n_hidden <- 2             # Number of hidden units in 1st hidden layer
 h2_activation <-"relu"       # Non-linear function for 2nd hidden layer
-h2_n_hidden <- 10#2 # Number of hidden units in 2nd hidden layer
+h2_n_hidden <- 2 # Number of hidden units in 2nd hidden layer
 h3_activation <- "relu"      # Non-linear function for 3rd hidden layer
-h3_n_hidden <- 10#2 # Number of hidden units in 3rd hidden layer
-o_activation <- "linear"#"sigmoid"    # Non-linear function for output layer
+h3_n_hidden <- 2 # Number of hidden units in 3rd hidden layer
+o_activation <- "sigmoid"    # Non-linear function for output layer
 
 # Set architecture
 model <- keras_model_sequential() %>% 

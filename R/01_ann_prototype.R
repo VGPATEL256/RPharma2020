@@ -88,9 +88,9 @@ head(y)
 # Now we are ready to train the network -----------------------------------
 
 # We start by setting the hyperparameters:
-n_hidden <- 1   # Number of hidden neurons (Only 1 hidden layer here)
-epochs <- 5     # Number of epochs (Number of passes of entire data set)
-epsilon <- 1000 # Learning rate (Step size, when adjusting the weights)
+n_hidden <- 4   # Number of hidden neurons (Only 1 hidden layer here)
+epochs <- 200     # Number of epochs (Number of passes of entire data set)
+epsilon <- 0.01 # Learning rate (Step size, when adjusting the weights)
 
 # And defining and initialising the the needed weight matrices
 
